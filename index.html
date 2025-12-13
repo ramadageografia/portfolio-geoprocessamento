@@ -3,170 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Geoprocessamento</title>
-    <link rel="stylesheet" href="style.css">
+    <title>[NOME DO PROJETO] - Portfólio Geoprocessamento</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .projeto-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 6rem 0 4rem;
+            margin-top: 60px;
+        }
+        
+        .projeto-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .meta-item {
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+        }
+        
+        .projeto-conteudo {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .projeto-section {
+            margin: 3rem 0;
+        }
+        
+        .tecnologias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .tecnologia-item {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .galeria img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .galeria img:hover {
+            transform: scale(1.02);
+        }
+        
+        .mapa-container {
+            height: 500px;
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--light-color);
+        }
+        
+        .dados-links a {
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        
+        .voltar-portfolio {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--light-color);
+            color: var(--dark-color);
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <!-- Cabeçalho/Navegação -->
+    <!-- Cabeçalho (mesmo do index) -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">GeoPortfólio</a>
+            <a href="../index.html" class="logo">GeoPortfólio</a>
             <ul class="nav-links">
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="../index.html#sobre">Sobre</a></li>
+                <li><a href="../index.html#habilidades">Habilidades</a></li>
+                <li><a href="../index.html#projetos">Projetos</a></li>
+                <li><a href="../index.html#contato">Contato</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero do Projeto -->
+    <section class="projeto-hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Portfólio de <span class="highlight">Geoprocessamento</span></h1>
-                <p>Análise espacial, SIG, sensoriamento remoto e desenvolvimento geoespacial</p>
-                <a href="#projetos" class="btn">Ver Projetos</a>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> > 
+                <a href="../areas/[AREA].html">[Área]</a> > 
+                <span>[Projeto]</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Sobre -->
-    <section id="sobre" class="section">
-        <div class="container">
-            <h2 class="section-title">Sobre Mim</h2>
-            <div class="sobre-content">
-                <div class="sobre-texto">
-                    <p>Profissional/estudante de Geoprocessamento com experiência em...</p>
-                    <ul>
-                        <li>Análise espacial e geoprocessamento</li>
-                        <li>Sistemas de Informação Geográfica (QGIS, ArcGIS)</li>
-                        <li>Processamento de imagens de satélite</li>
-                        <li>Desenvolvimento web com mapas (Leaflet, Mapbox)</li>
-                        <li>Banco de dados espaciais (PostGIS)</li>
-                    </ul>
+            <h1>[NOME DO PROJETO]</h1>
+            <p class="subtitle">[Breve descrição do projeto em uma linha]</p>
+            
+            <div class="projeto-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i> Concluído: [Mês/Ano]
                 </div>
-                <div class="sobre-imagem">
-                    <img src="assets/imagens/perfil.jpg" alt="Foto de perfil">
+                <div class="meta-item">
+                    <i class="fas fa-tags"></i> Categoria: [Cartografia/Sensoriamento/WebGIS]
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-user"></i> Cliente/Instituição: [Nome]
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i> Duração: [X semanas/meses]
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Habilidades -->
-    <section id="habilidades" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Habilidades Técnicas</h2>
-            <div class="habilidades-grid">
-                <div class="habilidade-categoria">
-                    <h3><i class="fas fa-map"></i> SIG & Análise Espacial</h3>
-                    <ul>
-                        <li>QGIS</li>
-                        <li>ArcGIS Pro</li>
-                        <li>Google Earth Engine</li>
-                        <li>PostGIS</li>
-                    </ul>
+    <!-- Conteúdo Principal -->
+    <main class="projeto-conteudo">
+        <!-- Resumo Executivo -->
+        <section class="projeto-section">
+            <h2><i class="fas fa-chart-line"></i> Resumo do Projeto</h2>
+            <p>[Descrição detalhada do projeto, objetivos, contexto e importância]</p>
+        </section>
+
+        <!-- Problema & Solução -->
+        <div class="grid-2-col">
+            <section class="projeto-section">
+                <h3><i class="fas fa-exclamation-triangle"></i> Desafio/Problema</h3>
+                <p>[Qual problema o projeto resolveu?]</p>
+            </section>
+            
+            <section class="projeto-section">
+                <h3><i class="fas fa-lightbulb"></i> Solução Proposta</h3>
+                <p>[Como foi resolvido com geoprocessamento?]</p>
+            </section>
+        </div>
+
+        <!-- Metodologia -->
+        <section class="projeto-section">
+            <h2><i class="fas fa-project-diagram"></i> Metodologia</h2>
+            <div class="metodologia-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Coleta de Dados</h4>
+                    <p>[Fontes de dados, APIs, imagens, etc.]</p>
                 </div>
-                <div class="habilidade-categoria">
-                    <h3><i class="fas fa-code"></i> Programação</h3>
-                    <ul>
-                        <li>Python (GDAL, Geopandas, Rasterio)</li>
-                        <li>JavaScript (Leaflet, Mapbox GL)</li>
-                        <li>SQL Espacial</li>
-                        <li>R (sf, raster)</li>
-                    </ul>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Pré-processamento</h4>
+                    <p>[Limpeza, correção, padronização]</p>
                 </div>
-                <div class="habilidade-categoria">
-                    <h3><i class="fas fa-satellite"></i> Sensoriamento Remoto</h3>
-                    <ul>
-                        <li>Classificação de imagens</li>
-                        <li>Índices espectrais (NDVI, NDWI)</li>
-                        <li>Processamento digital</li>
-                        <li>SAR/Radar</li>
-                    </ul>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Análise/Processamento</h4>
+                    <p>[Algoritmos, modelos, análises]</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Visualização</h4>
+                    <p>[Mapas, gráficos, dashboards]</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projetos -->
-    <section id="projetos" class="section">
-        <div class="container">
-            <h2 class="section-title">Projetos Destacados</h2>
-            <div class="projetos-grid">
-                <!-- Projeto 1 -->
-                <div class="projeto-card">
-                    <div class="projeto-imagem">
-                        <img src="assets/imagens/projetos/projeto1.jpg" alt="Projeto 1">
-                    </div>
-                    <div class="projeto-conteudo">
-                        <h3>Análise de Uso e Cobertura do Solo</h3>
-                        <p>Classificação supervisionada de imagens Sentinel-2 para mapeamento de uso da terra.</p>
-                        <div class="projeto-tags">
-                            <span class="tag">QGIS</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Sentinel-2</span>
-                        </div>
-                        <a href="#" class="projeto-link">Ver detalhes →</a>
-                    </div>
+        <!-- Tecnologias Utilizadas -->
+        <section class="projeto-section">
+            <h2><i class="fas fa-tools"></i> Tecnologias e Ferramentas</h2>
+            <div class="tecnologias-grid">
+                <div class="tecnologia-item">
+                    <i class="fab fa-python fa-2x"></i>
+                    <p>Python</p>
+                    <small>Geopandas, Rasterio</small>
                 </div>
-
-                <!-- Projeto 2 -->
-                <div class="projeto-card">
-                    <div class="projeto-imagem">
-                        <img src="assets/imagens/projetos/projeto2.jpg" alt="Projeto 2">
-                    </div>
-                    <div class="projeto-conteudo">
-                        <h3>Mapa Interativo Web</h3>
-                        <p>Dashboard interativo com Leaflet para visualização de dados ambientais.</p>
-                        <div class="projeto-tags">
-                            <span class="tag">Leaflet</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">GeoJSON</span>
-                        </div>
-                        <a href="#" class="projeto-link">Ver detalhes →</a>
-                    </div>
+                <div class="tecnologia-item">
+                    <i class="fas fa-map-marked-alt fa-2x"></i>
+                    <p>QGIS</p>
+                    <small>Processamento</small>
                 </div>
-
-                <!-- Adicione mais projetos -->
+                <div class="tecnologia-item">
+                    <i class="fab fa-js fa-2x"></i>
+                    <p>JavaScript</p>
+                    <small>Leaflet/Mapbox</small>
+                </div>
+                <!-- Adicione mais -->
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contato -->
-    <section id="contato" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Contato</h2>
-            <div class="contato-content">
-                <div class="contato-info">
-                    <p><i class="fas fa-envelope"></i> seu.email@exemplo.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Sua Localização</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-researchgate"></i></a>
-                        <a href="#"><i class="fas fa-file-pdf"></i></a>
+        <!-- Mapa Interativo (Se aplicável) -->
+        <section class="projeto-section">
+            <h2><i class="fas fa-map"></i> Mapa Interativo</h2>
+            <div id="map" class="mapa-container"></div>
+            <div class="mapa-legenda">
+                <!-- Legenda personalizada -->
+            </div>
+        </section>
+
+        <!-- Resultados -->
+        <section class="projeto-section">
+            <h2><i class="fas fa-chart-bar"></i> Resultados e Análises</h2>
+            
+            <!-- Galeria de Imagens/Mapas -->
+            <div class="galeria">
+                <img src="../assets/projetos/[nome]/mapa1.jpg" alt="Mapa 1">
+                <img src="../assets/projetos/[nome]/grafico1.jpg" alt="Gráfico 1">
+                <img src="../assets/projetos/[nome]/resultado1.jpg" alt="Resultado 1">
+            </div>
+            
+            <!-- Principais Descobertas -->
+            <div class="resultados-lista">
+                <h3>Principais Descobertas:</h3>
+                <ul>
+                    <li>Descoberta/Resultado 1</li>
+                    <li>Descoberta/Resultado 2</li>
+                    <li>Descoberta/Resultado 3</li>
+                </ul>
+            </div>
+            
+            <!-- Dados Quantitativos -->
+            <div class="dados-quantitativos">
+                <h3>Métricas do Projeto:</h3>
+                <div class="metricas-grid">
+                    <div class="metrica">
+                        <span class="numero">95%</span>
+                        <span class="label">Acurácia</span>
+                    </div>
+                    <div class="metrica">
+                        <span class="numero">2500</span>
+                        <span class="label">Km² mapeados</span>
+                    </div>
+                    <div class="metrica">
+                        <span class="numero">15</span>
+                        <span class="label">Camadas processadas</span>
                     </div>
                 </div>
-                <form class="contato-form">
-                    <input type="text" placeholder="Seu nome" required>
-                    <input type="email" placeholder="Seu email" required>
-                    <textarea placeholder="Sua mensagem" rows="5" required></textarea>
-                    <button type="submit" class="btn">Enviar Mensagem</button>
-                </form>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Rodapé -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Portfólio de Geoprocessamento. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+        <!-- Código/Dados (Opcional) -->
+        <section class="projeto-section">
+            <h2><i class="fas fa-code"></i> Recursos Técnicos</h2>
+            <div class="dados-links">
+                <a href="[LINK REPOSITORIO]" target="_blank">
+                    <i class="fab fa-github"></i> Código no GitHub
+                </a>
+                <a href="[LINK DATASET]" target="_blank">
+                    <i class="fas fa-database"></i> Dataset
+                </a>
+                <a href="[LINK NOTEBOOK]" target="_blank">
+                    <i class="fas fa-book"></i> Jupyter Notebook
+                </a>
+                <a href="[LINK RELATORIO]" target="_blank">
+                    <i class="fas fa-file-pdf"></i> Relatório Técnico
+                </a>
+            </div>
+        </section>
 
-    <script src="script.js"></script>
+        <!-- Conclusão -->
+        <section class="projeto-section">
+            <h2><i class="fas fa-flag-checkered"></i> Conclusão e Aprendizados</h2>
+            <p>[Reflexões sobre o projeto, desafios superados, aplicações futuras]</p>
+            
+            <h3>Próximos Passos:</h3>
+            <ul>
+                <li>Melhoria 1 planejada</li>
+                <li>Expansão para área maior</li>
+                <li>Integração com nova tecnologia</li>
+            </ul>
+        </section>
+
+        <!-- Navegação entre Projetos -->
+        <div class="projeto-navegacao">
+            <a href="[PROJETO-ANTERIOR].html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Projeto Anterior
+            </a>
+            <a href="../index.html#projetos" class="voltar-portfolio">
+                <i class="fas fa-th"></i> Ver Todos os Projetos
+            </a>
+            <a href="[PROXIMO-PROJETO].html" class="btn btn-secondary">
+                Próximo Projeto <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Inicializar mapa (exemplo básico)
+        const map = L.map('map').setView([-15.793889, -47.882778], 12); // Coordenadas de Brasília
+        
+        // Adicionar camada base
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+        
+        // Adicionar seus dados GeoJSON (exemplo)
+        fetch('../data/seu-dados.geojson')
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: function(feature) {
+                        return {
+                            color: feature.properties.color || '#3388ff',
+                            weight: 2,
+                            opacity: 0.8,
+                            fillOpacity: 0.3
+                        };
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties) {
+                            layer.bindPopup(`
+                                <strong>${feature.properties.name || 'Feature'}</strong><br>
+                                ${feature.properties.description || ''}
+                            `);
+                        }
+                    }
+                }).addTo(map);
+            });
+    </script>
 </body>
 </html>
